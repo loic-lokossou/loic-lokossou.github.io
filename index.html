@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CYBERSHIELD LKS Cybersecurity</title>
+
+    <!-- SEO basique -->
+    <meta name="description" content="CYBERSHIELD LKS Cybersecurity – Services professionnels de cybersécurité basés au Bénin. Pentest et audits de sécurité web.">
+    <meta name="author" content="Loïc LOKOSSOU">
+
+    <!-- Police -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* =======================
+           VARIABLES & RESET
+        ======================== */
+        :root {
+            --bg: #0a192f;
+            --card: #112240;
+            --accent: #64ffda;
+            --accent-alt: #00d9ff;
+            --text: #e6f1ff;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        /* =======================
+           HEADER
+        ======================== */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 25, 47, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            opacity: 0;
+            transform: translateY(-30px);
+            filter: blur(10px);
+            animation: logoReveal 1.5s ease forwards;
+        }
+
+        .logo img {
+            width: 45px;
+        }
+
+        .logo span {
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        @keyframes logoReveal {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+                filter: blur(0);
+                text-shadow: 0 0 12px var(--accent);
+            }
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text);
+            font-weight: 500;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Burger menu */
+        .burger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .burger span {
+            width: 25px;
+            height: 3px;
+            background: var(--text);
+        }
+
+        /* =======================
+           SECTIONS
+        ======================== */
+        section {
+            max-width: 1100px;
+            margin: auto;
+            padding: 6rem 1rem;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: 0.8s ease;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+            box-shadow: inset 0 0 40px rgba(100, 255, 218, 0.05);
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        /* =======================
+           CARDS
+        ======================== */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card, .repo-card {
+            background: var(--card);
+            padding: 1.5rem;
+            border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover, .repo-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 0 25px rgba(100, 255, 218, 0.15);
+        }
+
+        .repo-card a {
+            display: inline-block;
+            margin-top: 0.8rem;
+        }
+
+        /* =======================
+           CONTACT
+        ======================== */
+        .contact-links a {
+            display: block;
+            margin-bottom: 0.7rem;
+        }
+
+        /* =======================
+           FOOTER
+        ======================== */
+        footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            background: #020c1b;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        footer nav a {
+            margin: 0 0.7rem;
+            font-size: 0.85rem;
+        }
+
+        /* =======================
+           RESPONSIVE
+        ======================== */
+        @media (max-width: 768px) {
+            nav ul {
+                position: absolute;
+                top: 70px;
+                right: 0;
+                background: var(--bg);
+                flex-direction: column;
+                width: 200px;
+                padding: 1rem;
+                display: none;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .burger {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="nav-container">
+        <div class="logo">
+            <img src="logo.png" alt="CYBERSHIELD LKS logo">
+            <span>CYBERSHIELD LKS</span>
+        </div>
+
+        <nav>
+            <ul id="nav-links">
+                <li><a href="#about">À propos</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#github">Dépôts GitHub</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+
+        <div class="burger" id="burger">
+            <span></span><span></span><span></span>
+        </div>
+    </div>
+</header>
+
+<main style="padding-top:90px">
+
+<section id="about">
+    <h2>À propos</h2>
+    <p>
+        Je suis <strong>Loïc LOKOSSOU</strong>, fondateur de <strong>CYBERSHIELD LKS Cybersecurity</strong>,
+        une entreprise de cybersécurité <strong>basée au Bénin</strong>.
+    </p>
+    <p>
+        Ma mission est d’aider les organisations à renforcer leur posture de sécurité
+        grâce à une approche éthique, méthodique et alignée sur les standards internationaux.
+        Chaque mission est conduite avec rigueur, confidentialité et responsabilité.
+    </p>
+</section>
+
+<section id="services">
+    <h2>Services</h2>
+    <div class="cards">
+        <div class="card">
+            <h3>Pentest d’Applications Web</h3>
+            <ul>
+                <li>Tests d’intrusion complets</li>
+                <li>Standards OWASP</li>
+                <li>Tests manuels & automatisés</li>
+                <li>Rapports détaillés avec scoring CVSS</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>Audit de Sécurité Web</h3>
+            <ul>
+                <li>Analyse de l’architecture</li>
+                <li>Revue des configurations</li>
+                <li>Plan de remédiation</li>
+                <li>Recommandations priorisées</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section id="github">
+    <h2>Dépôts GitHub</h2>
+
+    <!-- === BLOCS FACILEMENT MODIFIABLES === -->
+
+    <div class="repo-card">
+        <h3>Pentest Methodology</h3>
+        <p>Checklists et templates de rapports professionnels</p>
+        <a href="https://github.com/loic-lokossou/pentest-methodology" target="_blank">
+            Voir sur GitHub →
+        </a>
+    </div>
+
+    <div class="repo-card">
+        <h3>Security Scripts</h3>
+        <p>Scripts Python et Bash d’automatisation sécurité</p>
+        <a href="https://github.com/loic-lokossou/security-scripts" target="_blank">
+            Voir sur GitHub →
+        </a>
+    </div>
+
+    <!-- Ajouter / supprimer ces blocs facilement -->
+</section>
+
+<section id="contact">
+    <h2>Contact</h2>
+    <div class="contact-links">
+        <a href="mailto:loic.lokossou.cyber@gmail.com?subject=Demande%20de%20contact%20CYBERSHIELD%20LKS&body=Bonjour%20Loïc,">
+            📧 Contacter par email
+        </a>
+        <a href="https://github.com/loic-lokossou" target="_blank">
+            💻 GitHub
+        </a>
+        <a href="https://loic-lokossou.github.io" target="_blank">
+            🌐 Site officiel
+        </a>
+        <p>📍 Localisation : Bénin</p>
+    </div>
+</section>
+
+</main>
+
+<footer>
+    <p>© <span id="year"></span> CYBERSHIELD LKS Cybersecurity — Pratique éthique et responsable</p>
+    <nav>
+        <a href="#about">À propos</a>
+        <a href="#services">Services</a>
+        <a href="#github">GitHub</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</footer>
+
+<script>
+    /* =======================
+       MENU MOBILE
+    ======================== */
+    const burger = document.getElementById('burger');
+    const navLinks = document.getElementById('nav-links');
+
+    burger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+
+    /* =======================
+       SCROLL ANIMATIONS
+    ======================== */
+    const sections = document.querySelectorAll('section');
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.2 });
+
+    sections.forEach(section => observer.observe(section));
+
+    /* =======================
+       YEAR FOOTER
+    ======================== */
+    document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+  </html>
